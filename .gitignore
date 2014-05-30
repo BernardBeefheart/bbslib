@@ -1,0 +1,11 @@
+*.o
+*~
+*.exe
+*.log
+*.gz
+.*.swp
+bbclib-test
+*.kdev*
+*.layout
+<*
+*.komodoproject
