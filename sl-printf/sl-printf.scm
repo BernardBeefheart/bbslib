@@ -68,15 +68,9 @@
                                 (display-and-deformat (list "0x" (show-int (car args) filler len 16)) lst-of-chars (cdr args))
                                 (on-else c lst-of-chars args)))
                        ((#\d) (if in-format
-                                (display-and-deformat (list "0d" (show-int (car args) filler len 10)) lst-of-chars (cdr args))
+                                (display-and-deformat (list (show-int (car args) filler len 10)) lst-of-chars (cdr args))
                                 (on-else c lst-of-chars args)))
                        (else (display-and-deformat (list  c) lst-of-chars args))))
                    #t))))
       (deformat lformat all-args #f default-filler default-len))))
 
-(define main
-  (lambda()
-    (newline)
-    (sl-printf "str %s int %3d le d ne passe %s?\n<EOL> mais si! hex %03x\n" "coucou" 5 "pas" 23)))
-
-(main)

@@ -9,3 +9,4 @@ bbclib-test
 *.layout
 <*
 *.komodoproject
+/.project
