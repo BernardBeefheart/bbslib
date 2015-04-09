@@ -30,15 +30,6 @@
 	(printf "make-chicken-units source-file unit output-file~%")
 	(exit exit-code)))
 
-(define main-old
-  (lambda()
-	(let ((args (cdr (argv))))
-	  (let ((file-name (first args))
-			(unit-name (second args))
-			(output-file-name (third args)))
-		(file->unit file-name unit-name output-file-name)))
-	(exit 0)))
-
 
 (define main
   (lambda()
