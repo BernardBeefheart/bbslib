@@ -4,6 +4,7 @@
 ;; usage       : make-chicken-units source-file unit-name output-file
 ;; ======================================================================
 
+(require-extension matchable)
 (declare (uses extras))
 
 (define get-file
@@ -23,7 +24,13 @@
 								 (fprintf port "(declare (unit ~A))~%" unit-name)
 								 (write-file-content port file-content)))))))
 
-(define main
+(define dohelp
+  (lambda (exit-code)
+	(printf "make-chicken-units [--help] : this text~%")
+	(printf "make-chicken-units source-file unit output-file~%")
+	(exit exit-code)))
+
+(define main-old
   (lambda()
 	(let ((args (cdr (argv))))
 	  (let ((file-name (first args))
@@ -32,4 +39,14 @@
 		(file->unit file-name unit-name output-file-name)))
 	(exit 0)))
 
+
+(define main
+  (lambda()
+	(let ((args (cdr (argv))))
+	  (match args
+			 (("--help") (dohelp 0))
+			 (() (dohelp 0))
+			 ((source-file unit output-file) (file->unit source-file unit output-file))
+			 (_ (dohelp 1))))))
+			 
 (main)
