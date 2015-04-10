@@ -7,7 +7,7 @@ This utility is written for _Chicken Scheme_. It transform a standard scheme sou
 
 You can compile it with:
 
-	csc make-chicken-units.scm
+	make clean all
 
 You can use it like that:
 
