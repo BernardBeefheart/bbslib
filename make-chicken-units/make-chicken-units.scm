@@ -18,7 +18,7 @@
 	(printf "~A source-file unit output-file~%" (slot-value self 'exe-name))
 	(exit exit-code))
 
-(define *application* (make <Application> 'exe-name "make-chicken-units" 'version "1.0.0"))
+(define *application* (make <Application> 'exe-name "make-chicken-units" 'version "1.0.1"))
 
 
 (define on-file-error 
