@@ -10,3 +10,5 @@ bbclib-test
 <*
 *.komodoproject
 /.project
+
+make-chicken-units/make-chicken-units
