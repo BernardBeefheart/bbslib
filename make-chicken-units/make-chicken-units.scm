@@ -16,28 +16,20 @@
 
 (define-method (dohelp (self <Application>) (exit-code <integer>))
 	(printf "~A source-file unit output-file~%" (slot-value self 'exe-name))
+	(printf "Adds the following line:~%")
+	(printf "   (declare (unit ~A))~%" "unit-name")
+	(printf "at the beginning of output-file~%")
+	(printf "and copy source-file after.")
 	(exit exit-code))
 
-(define *application* (make <Application> 'exe-name "make-chicken-units" 'version "1.0.1"))
-
-
-(define on-file-error 
-  (lambda (direction exn)
-	(printf "ERROR (~A): ~A ~A~%" 
-			direction 
-			((condition-property-accessor 'exn 'message) exn)
-			((condition-property-accessor 'exn 'arguments) exn))
-	(dohelp *application* 1)))
-
-(define handle-file-operation
-  (lambda (direction chunk)
-	(handle-exceptions exn
-					   (on-file-error direction exn)
-					   (chunk))))
+(define *application* (make <Application> 
+							'exe-name (car (argv)) 
+							'version "1.0.1"))
 
 (define get-file
   (lambda (file-name)
 	(handle-file-operation 
+	  *application*
 	  "read"
 	  (lambda ()
 		(read-lines file-name)))))
@@ -51,6 +43,7 @@
 					 (fprintf port "~A~%" (car rest))
 					 (write-file-content port (cdr rest))))))
 		(handle-file-operation
+		  *application*
 		  "write"
 		  (lambda ()
 			(call-with-output-file output-file-name
