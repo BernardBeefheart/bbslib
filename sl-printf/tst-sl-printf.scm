@@ -7,11 +7,21 @@
 (import (scheme base) (scheme write))
 (import (sl-printf))
 
+(define number-loop
+  (lambda (N)
+	(if (< N 0)
+	  0
+	  (begin
+		(slprintf "loop %3d -> %03x\n" N N)
+		(number-loop (- N 1))))))
+
 (define test-main
   (lambda()
     (newline)
     (slprintf "str %s(coucou) int %3d (5) le d ne passe %s (pas)?\n<EOL> mais si! hex %03x (23 -> 0x17)\n" 
-			   "coucou" 5 "pas" 23)))
+			   "coucou" 5 "pas" 23)
+	(number-loop 255)))
+
 
 (test-main)
 

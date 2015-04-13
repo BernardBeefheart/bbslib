@@ -5,7 +5,7 @@
 (define-library 
   (sl-printf)
   (export slprintf)
-  (import (scheme base) (scheme write))
+  (import (scheme base) (scheme write) (scheme char))
   (begin
 	(define (_println . args)
 	  (for-each display args)
@@ -15,7 +15,7 @@
 	  (lambda(digit base)
 		(cond
 		  ((< digit 10) (integer->char (+ digit (char->integer #\0))))
-		  (else (integer->char (+ digit (char->integer #\a) - 10))))))
+		  (else (integer->char (+ digit (- (char->integer #\a) 10)))))))
 
 	(define show-int
 	  (lambda(value filler len base)
