@@ -13,7 +13,7 @@ MAIN = tst-sl-printf.scm
 EXE = tst-sl-printf
 
 OBJS = $(patsubst %.scm,%.so,$(notdir $(SOURCES)))
-
+IMPORTSSCM = $(patsubst %.scm,%.import.scm,$(notdir $(SOURCES)))
 all: $(EXE)
 
 $(EXE): $(OBJS) $(MAIN)
@@ -24,7 +24,7 @@ $(EXE): $(OBJS) $(MAIN)
 
 
 clean: 
-	rm -fv $(OBJS) $(EXE) $(CSRCS)
+	rm -fv $(OBJS) $(EXE) $(IMPORTSSCM) 
 
 .PHONY: all clean
 
