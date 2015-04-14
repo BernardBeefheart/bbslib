@@ -4,27 +4,9 @@
 # ======================================================================
 #
 
-CSC = csc -c -debug-level 0 -verbose -compile-syntax
-CSLD = csc
+include ../mk/chicken-config.mk
 
 SOURCES = make-chicken-units.scm application.scm 
-
-OBJS = $(patsubst %.scm,%.o,$(notdir $(SOURCES)))
-# OBJS = $(addprefix $(ODIR)/, $(_OBJS))
-
 EXE = make-chicken-units
 
-all: $(EXE)
-
-$(EXE): $(OBJS) 
-	$(CSLD) $(OBJS) -o $@
-
-%.o: %.scm
-	$(CSC) $<
-
-clean: 
-	rm -fv $(OBJS) $(EXE)
-
-.PHONY: all clean
-
-
+include ../mk/chicken-appmaker.mk
