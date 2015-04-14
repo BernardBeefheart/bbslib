@@ -13,3 +13,5 @@
 *.import.scm
 
 make-chicken-units/make-chicken-units
+sl-printf/tst-sl-printf
+
