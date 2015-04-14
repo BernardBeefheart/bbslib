@@ -1,19 +1,12 @@
 ;; ========================================================================
-;; sl-printf.scm
+;; slprintf.scm
 ;; ========================================================================
 
 (define-library 
-  (sl-printf)
+  (slprintf)
   (export slprintf)
   (import (scheme base) (scheme write) (scheme char) (println))
   (begin
-
-	(define digit->char
-	  (lambda(digit base)
-		(cond
-		  ((< digit 10) (integer->char (+ digit (char->integer #\0))))
-		  (else (integer->char (+ digit (- (char->integer #\a) 10)))))))
-
 
 	(define format-int
 	  (lambda(value filler len base)
@@ -58,17 +51,20 @@
 						   ((#\newline) (newline)
 										(deformat (cdr lst-of-chars) args #f default-filler default-len))
 						   ((#\%) (deformat (cdr lst-of-chars) args #t default-filler default-len))
-						   ((#\s) (if in-format
-									(display-and-deformat (list (car args)) lst-of-chars (cdr args))
-									(on-else c lst-of-chars args)))
 						   ((#\space #\0) (if in-format
 											(deformat (cdr lst-of-chars) args #t #\0 default-len)
 											(on-else c lst-of-chars args)))
 						   ((#\1 #\2 #\3 #\4 #\5 #\6 #\7 #\8 #\9) (if in-format
 																	(deformat (cdr lst-of-chars) args #t filler (- (char->integer c) (char->integer #\0)))
 																	(on-else c lst-of-chars args)))
+						   ((#\s) (if in-format
+									(display-and-deformat (list (car args)) lst-of-chars (cdr args))
+									(on-else c lst-of-chars args)))
 						   ((#\x) (if in-format
 									(display-and-deformat (list (format-int (car args) filler len 16)) lst-of-chars (cdr args))
+									(on-else c lst-of-chars args)))
+						   ((#\b) (if in-format
+									(display-and-deformat (list (format-int (car args) filler len 2)) lst-of-chars (cdr args))
 									(on-else c lst-of-chars args)))
 						   ((#\d) (if in-format
 									(display-and-deformat (list (format-int (car args) filler len 10)) lst-of-chars (cdr args))

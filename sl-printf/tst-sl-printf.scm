@@ -5,14 +5,14 @@
 ;; ========================================================================
 
 (import (scheme base) (scheme write))
-(import (sl-printf) (println))
+(import (slprintf) (println))
 
 (define number-loop
   (lambda (N)
 	(if (< N 0)
 	  0
 	  (begin
-		(slprintf "loop %3d -> %03x\n" N N)
+		(slprintf "loop %3d -> %02x -> %08b\n" N N N)
 		(number-loop (- N 1))))))
 
 (define test-main
