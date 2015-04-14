@@ -1,11 +1,10 @@
 # ======================================================================
 # Makefile 
-# for make-chicken-units
+# for tst-sl-printf
 # ======================================================================
 #
 
-CSC = csc -debug-level 0 -verbose -extend r7rs -require-extension r7rs  -I.
-CSLD = csc
+CSC = csc -debug-level 0 -verbose -require-extension r7rs  -I.
 
 
 SOURCES = println.scm sl-printf.scm 

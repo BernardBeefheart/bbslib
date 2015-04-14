@@ -10,5 +10,6 @@
 <*
 *.komodoproject
 /.project
+*.import.scm
 
 make-chicken-units/make-chicken-units

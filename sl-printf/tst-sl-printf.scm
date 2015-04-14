@@ -18,12 +18,16 @@
 (define test-main
   (lambda()
     (newline)
-    (slprintf "str %s(coucou) int %3d (5) le d ne passe %s (pas)?\n<EOL> mais si! hex %03x (23 -> 0x17)\n" 
-			   "coucou" 5 "pas" 23)
 	(number-loop 255)
-	(guard (except (else (_println "ERROR: " except)))
+    (slprintf "str %s(coucou) int %3d (5) le d ne passe %s (pas)?\n<EOL> mais si! hex %03x (23 -> 0x17) %c ('a')\n" 
+			   "coucou" 5 "pas" 23 #\a)
+	(guard (except (else (println "ERROR: " except)))
 		   (slprintf "with error : %d\n" "raté"))
-	(_println "Fin du test!")))
+	(guard (except (else (println "ERROR: " except)))
+		   (slprintf "with error : %c\n" 32))
+	(guard (except (else (println "ERROR, bad call: " except)))
+		   (format-char "Ho!"))
+	(println "Fin du test!")))
 
 
 

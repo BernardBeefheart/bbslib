@@ -6,9 +6,9 @@
 
 (define-library 
   (println)
-  (export _println)
+  (export println)
   (import (scheme base) (scheme write))
   (begin
-	(define (_println . args)
+	(define (println . args)
 	  (for-each display args)
 	  (newline))))
