@@ -24,7 +24,7 @@
 
 (define *application* (make <Application> 
 							'exe-name (car (argv)) 
-							'version "1.0.1"))
+							'version "1.0.2"))
 
 (define get-file
   (lambda (file-name)
