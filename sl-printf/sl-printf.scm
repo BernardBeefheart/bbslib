@@ -5,11 +5,8 @@
 (define-library 
   (sl-printf)
   (export slprintf)
-  (import (scheme base) (scheme write) (scheme char))
+  (import (scheme base) (scheme write) (scheme char) (println))
   (begin
-	(define (_println . args)
-	  (for-each display args)
-	  (newline))
 
 	(define digit->char
 	  (lambda(digit base)
@@ -19,6 +16,8 @@
 
 	(define show-int
 	  (lambda(value filler len base)
+		(when (not (integer? value))
+		  (raise "integer expected"))
 		(letrec ((in-show-int
 				   (lambda(acc x idx)
 					 (cond
