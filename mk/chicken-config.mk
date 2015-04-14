@@ -2,7 +2,7 @@
 # chicken-config.mk
 # ======================================================================
 
-CSC = csc -c -debug-level 0 -verbose -extend r7rs -require-extension r7rs -I.
+CSC = csc -c -debug-level 0 -verbose  -I.
 CSLD = csc
 
 %.o: %.scm

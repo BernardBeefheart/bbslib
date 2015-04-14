@@ -7,7 +7,7 @@
 CSC = csc -debug-level 0 -verbose -require-extension r7rs  -I.
 
 
-SOURCES = println.scm sl-printf.scm 
+SOURCES = println.scm slprintf.scm 
 MAIN = tst-sl-printf.scm
 EXE = tst-sl-printf
 
