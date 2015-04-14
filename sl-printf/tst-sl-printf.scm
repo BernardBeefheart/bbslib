@@ -4,8 +4,7 @@
 ;; gosh -I. tst-sl-printf.scm
 ;; ========================================================================
 
-(import (scheme base) (scheme write))
-(import (slprintf) (println))
+(import (scheme base) (scheme write) (slprintf) (println))
 
 (define number-loop
   (lambda (N)

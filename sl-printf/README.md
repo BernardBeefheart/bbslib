@@ -57,3 +57,13 @@ With Chicken :
 	make clean all && ./tst-sl-printf
 
 __Note__ : the _Makefile_ constructs the test _and_ the libs.
+
+With Chibi Scheme :
+
+	chibi-scheme tst-sl-printf.scm
+
+__Note__ : you must do this before :
+
+	ln -s println.scm println.sld
+	ln -s slprintf.scm slprintf.sld
+
