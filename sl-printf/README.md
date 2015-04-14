@@ -18,6 +18,7 @@ Here is an exemple :
 ### println
 
 __Usage__ :
+
 	(import (println))
 
 	(println arg1 arg2 ...)
@@ -27,6 +28,7 @@ __Result__ : prints each _argn_ one by one, without separation, ending with a ne
 ### slprintf
 
 __Usage__ :
+
 	(import (slprintf))
 
 	(slprintf format arg1 arg2 ...)
