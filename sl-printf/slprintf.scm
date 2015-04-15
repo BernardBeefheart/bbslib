@@ -5,7 +5,7 @@
 (define-library 
   (slprintf)
   (export slprintf)
-  (import (scheme base) (scheme write) (scheme char) (println))
+  (import (scheme base) (scheme write) (scheme char) (println) (match-case-simple))
   (begin
 
 	(define format-int
@@ -21,9 +21,14 @@
 
 	(define format-char
 	  (lambda (value)
+		(match-case-simple value
+						   (,value (char? value) value)
+						   (__ () (raise "char expected")))))
+#|	
 		(if (not (char? value))
 		  (raise "char expected")
 		  value)))
+|#
 
 	(define (slprintf format . all-args)
 	  (let ((lformat (string->list format))

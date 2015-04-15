@@ -5,7 +5,8 @@
 #
 
 SOURCES = println.scm slprintf.scm 
-MAIN = tst-sl-printf.scm
-EXE = tst-sl-printf
+MAIN = test.scm
+EXE = test
+CSCFLAGS = -I ../match
 
-include ../mk/chicken-r7rs-config.mk
+include ../mk/chicken-r7rs.mk
