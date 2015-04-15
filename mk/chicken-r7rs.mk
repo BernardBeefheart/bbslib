@@ -8,10 +8,10 @@
 # MAIN = tst-sl-printf.scm
 # EXE = tst-sl-printf
 # 
-# include ../mk/chicken-r7rs-config.mk
+# include ../mk/chicken-r7rs.mk
 # ======================================================================
 
-CSC = csc -debug-level 0 -verbose -require-extension r7rs  -I.
+CSC = csc -debug-level 0 -verbose -X r7rs -require-extension r7rs  -I . $(CSCFLAGS)
 
 OBJS = $(patsubst %.scm,%.so,$(notdir $(SOURCES)))
 IMPORTSSCM = $(patsubst %.scm,%.import.scm,$(notdir $(SOURCES)))
