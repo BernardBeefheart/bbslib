@@ -24,11 +24,6 @@
 		(match-case-simple value
 						   (,value (char? value) value)
 						   (__ () (raise "char expected")))))
-#|	
-		(if (not (char? value))
-		  (raise "char expected")
-		  value)))
-|#
 
 	(define (slprintf format . all-args)
 	  (let ((lformat (string->list format))

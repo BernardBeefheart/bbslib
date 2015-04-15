@@ -1,11 +1,14 @@
 ; A simple linear pattern matcher
 ; It is efficient (generates code at macro-expansion time) and simple:
-; it should work on any R5RS Scheme system.
+; it should work on any R5RS Scheme system. This modified version 
+; should work on any R7RS Scheme system.
 ;
 ; It was first developed for the leanTAP theorem prover in miniKanren.
 ; It has been in the miniKanren repository
 ;    http://kanren.sf.net/viewvc/kanren/kanren/mini/leanTAP.scm?view=log
 ; since August 2005.
+;
+; found on http://okmij.org/ftp/Scheme/macros.html#match-case-simple
 ;
 ; See the above code for the example of using match-case-simple:
 ; transforming a first-order logic formula to the Negation Normal Form.
@@ -29,7 +32,6 @@
 ; as a simple underscore. That does not work in R6RS which reserves
 ; the underscore. Therefore, the always-matching pattern is changed
 ; to two underscores.
-; (import-for-syntax r7rs)
 
 (define-library 
   (match-case-simple)
@@ -86,5 +88,4 @@
 		((_ val lit kt kf)
 		 (if (equal? val (quote lit)) kt kf))))
 
-	;; (println "Module match-case-simple loaded.")
 	))
