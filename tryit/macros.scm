@@ -5,19 +5,14 @@
 
 (define-library 
   (macros)
-  (import (scheme base) (println))
+  (cond-expand
+	(chibi (import (scheme base) (srfi 46)))
+	(else (import (scheme base))))
+  (export mywhile mywhen)
+  
   (begin
 
-	(cond-expand
-	  (chibi
-		(println "macros experiments with chibi scheme"))
-	  (gauche
-		(println "macros experiments with gauche"))
-	  (chicken
-		(println "macros experiments with chicken"))
-	  ;; le else est obligatoire pour gosh!
-	  (else
-		(println "macros experiments with unknown scheme")))
+
 	;; exemple : à partir de http://www.willdonnelly.net/blog/scheme-syntax-rules/
 	;; écrire un while
 	;; (define x 0)
@@ -35,14 +30,6 @@
 						   (loop))
 						 #f)))))
 
-	;; test
-	(define x 0)
-	(println "\n-> mywhile test ...")
-	(mywhile (< x 5)
-			 (set! x (+ x 1))
-			 (println x))
-	(println "\n-> mywhile test end")
-
 	;; avec when
 	(define-syntax mywhen
 	  (syntax-rules ()
@@ -51,16 +38,4 @@
 					   (begin
 						 body ...)
 					   #f))))
-
-	;; test
-	(define mywhen-test 
-	  (lambda(N)
-		(mywhen (>= N 0)
-				(println N)
-				(mywhen-test (- N 1)))))
-
-	(println "\n-> mywhen test ...")
-	(mywhen-test 5)
-	(println "\n-> mywhen test end")
-
 	))
