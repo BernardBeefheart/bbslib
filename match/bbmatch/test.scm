@@ -18,7 +18,7 @@
   (guard (except (else
 				   (begin
 					 (set! *fail* (+ *fail* 1))
-					 (format-result fail-msg name expect "ERROR!"))))
+					 (format-result fail-msg name expect except))))
 
 		 (let ((result (thunk)))
 		   (cond
