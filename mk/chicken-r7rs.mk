@@ -11,7 +11,7 @@
 # include ../mk/chicken-r7rs.mk
 # ======================================================================
 
-CSC = csc -debug-level 0 -verbose -X r7rs -require-extension r7rs  -I . $(CSCFLAGS)
+CSC = csc -debug-level 0 -verbose -X r7rs -require-extension r7rs  -I. -L. $(CSCFLAGS)
 
 OBJS = $(patsubst %.scm,%.so,$(notdir $(SOURCES)))
 IMPORTSSCM = $(patsubst %.scm,%.import.scm,$(notdir $(SOURCES)))
