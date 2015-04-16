@@ -191,30 +191,33 @@
               x)
             '#(1 0 3))
 
-#|+(not alexpander)
-(begin
-(define-record point x y)
+#|
+(cond-expand
+  (chicken
+	(begin
+	  (define-record point x y)
 
-(test-equal "record"
-            (match (make-point 123 456) (($ point x y) (list x y)))
-            '(123 456))
+	  (test-equal "record"
+				  (match (make-point 123 456) (($ point x y) (list x y)))
+				  '(123 456))
 
-(test-equal "record nested"
-            (match (make-point 123 '(456 789)) (($ point x (y z)) (list x y z)))
-            '(123 456 789))
+	  (test-equal "record nested"
+				  (match (make-point 123 '(456 789)) (($ point x (y z)) (list x y z)))
+				  '(123 456 789))
 
-(test-equal "record getter"
-            (let ((p (make-point 123 456)))
-              (match p (($ point x (get! y)) (list x (y)))))
-            '(123 456))
+	  (test-equal "record getter"
+				  (let ((p (make-point 123 456)))
+					(match p (($ point x (get! y)) (list x (y)))))
+				  '(123 456))
 
-(test-equal "record setter"
-            (let ((p (make-point 123 456)))
-              (match p (($ point x (set! y)) (y 789)))
-              (list (point-x p) (point-y p)))
-            '(123 789))
-)
+	  (test-equal "record setter"
+				  (let ((p (make-point 123 456)))
+					(match p (($ point x (set! y)) (y 789)))
+					(list (point-x p) (point-y p)))
+				  '(123 789))
+	  )))
 |#
+
 
 (test-equal "single tail"
             (match '((a . 1) (b . 2) (c . 3))
