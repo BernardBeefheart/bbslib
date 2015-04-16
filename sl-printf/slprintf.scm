@@ -15,9 +15,9 @@
 		  (let* ((s (number->string value base))
 				 (l (string-length s))
 				 (d (- len l)))
-			  (if (> d 0)
-				(string-append (make-string d filler) s)
-				s)))))
+			(if (> d 0)
+			  (string-append (make-string d filler) s)
+			  s)))))
 
 	(define format-char
 	  (lambda (value)
