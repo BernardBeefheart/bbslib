@@ -571,3 +571,11 @@ dd p:first-child {
   font-size: .85em;
   font-style: italic;
 }
+
+.toc {
+	display: block;
+	width: 33%;
+	padding: 8px;
+	float: left;
+}
+
