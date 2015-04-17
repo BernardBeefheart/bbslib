@@ -1,5 +1,5 @@
 $(document).ready(function () {
 	$('#main_content').headsmart();
-	$( "#toc" ).load( "/bbslib/content.html");
+	$( "#toc" ).load( "http://bernardbeefheart.github.io/bbslib/content.html");
 })
 
