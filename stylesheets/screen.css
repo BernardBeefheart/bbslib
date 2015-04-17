@@ -525,10 +525,6 @@ dd p:first-child {
   margin-top: 0;
 }
 
-#main_content p {
-	text-align: justify;
-}
-
 .header-level-1 {
   font-size: 1.85em;
   border-bottom: .2em double #d3ccc1;
@@ -572,10 +568,19 @@ dd p:first-child {
   font-style: italic;
 }
 
+/* my ads */
+#main_content p,
+#main_content li,
+#main_content blockquote {
+	text-align: justify;
+}
+
 #toc {
 	display: block;
 	width: 33%;
 	padding: 8px;
+	margin: 15px;
+	border: 1px solid #bbb;
 	float: left;
 }
 
