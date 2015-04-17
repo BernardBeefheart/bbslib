@@ -1,1 +1,5 @@
-console.log('This would be the main JS file.');
+$(document).ready(function () {
+	$('#main_content').headsmart();
+	$( "#toc" ).load( "/git-pages/bbslib/content.html");
+})
+
