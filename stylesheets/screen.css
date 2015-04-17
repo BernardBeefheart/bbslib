@@ -525,6 +525,10 @@ dd p:first-child {
   margin-top: 0;
 }
 
+#main_content p {
+	text-align: justify;
+}
+
 .header-level-1 {
   font-size: 1.85em;
   border-bottom: .2em double #d3ccc1;
