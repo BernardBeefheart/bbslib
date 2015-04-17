@@ -12,6 +12,10 @@
 	(println "macros experiments with gauche"))
   (chicken
 	(println "macros experiments with chicken"))
+  (sagittarius
+	(println "macros experiments with sagittarius"))
+  (foment
+	(println "macros experiments with foment"))
   ;; le else est obligatoire pour gosh!
   (else
 	(println "macros experiments with unknown scheme")))
