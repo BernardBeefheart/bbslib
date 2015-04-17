@@ -3,7 +3,7 @@
 ;; playing with macros in Scheme : tests
 ;; ======================================================================
 
-(import (scheme base) (println) (macros))
+(import (scheme base) (println) (macros) (tester))
 
 (cond-expand
   (chibi
@@ -20,22 +20,25 @@
   (else
 	(println "macros experiments with unknown scheme")))
 
+(test-begin "macros")
 ;; test
 (define x 0)
-(println "\n-> mywhile test ...")
+(test-equal "before mywhile" x 0)
 (mywhile (< x 5)
 		 (set! x (+ x 1))
 		 (println x))
-(println "\n-> mywhile test end")
+(test-equal "after mywhile" x 5)
 
 
 ;; test
 (define mywhen-test 
-  (lambda(N)
-	(mywhen (>= N 0)
-			(println N)
-			(mywhen-test (- N 1)))))
+  (lambda()
+	(mywhen (> x 0)
+			(println x)
+            (set! x (- x 1))
+			(mywhen-test))))
 
 (println "\n-> mywhen test ...")
-(mywhen-test 5)
-(println "\n-> mywhen test end")
+(mywhen-test)
+(test-equal "after mywhen" x 0)
+(test-end "maros")
