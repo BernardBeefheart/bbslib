@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=640">
+
+    <link rel="stylesheet" href="stylesheets/core.css" media="screen">
+    <link rel="stylesheet" href="stylesheets/mobile.css" media="handheld, only screen and (max-device-width:640px)">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+
+    <script type="text/javascript" src="javascripts/modernizr.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="javascripts/headsmart.min.js"></script>
+    <script type="text/javascript" src="javascripts/main.js"> </script>
+    <title>bbslib by BernardBeefheart: sl-printf</title>
+  </head>
+
+  <body>
+    <a id="forkme_banner" href="https://github.com/BernardBeefheart/bbslib">View on GitHub</a>
+    <div class="shell">
+
+      <header>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <h1>Bbslib</h1>
+            <h2>An experimental scheme library.</h2>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+      </header>
+
+      <section id="downloads">
+        <span class="inner">
+          <a href="https://github.com/BernardBeefheart/bbslib/zipball/master" class="zip"><em>download</em> .ZIP</a><a href="https://github.com/BernardBeefheart/bbslib/tarball/master" class="tgz"><em>download</em> .TGZ</a>
+        </span>
+      </section>
+
+
+      <span class="banner-fix"></span>
+
+
+      <section id="main_content">
+        <h1>
+<a id="bbslib" class="anchor" href="#bbslib" aria-hidden="true"><span class="octicon octicon-link"></span></a>bbslib: sl-printf</h1>
+
+	    <section id="toc">
+	    </section>
+		<p>This printf was done to get formatted output as in C. Written for R7RS.</p>
+
+<h2>
+<a id="user-content-documentation" class="anchor" href="#documentation" aria-hidden="true"><span class="octicon octicon-link"></span></a>documentation</h2>
+
+<p><em>sl-printf</em> gives two libraries :</p>
+
+<ul class="task-list">
+<li>
+<em>println</em>, which print a list of items followed by a new line,</li>
+<li>
+<em>slprintf</em>, wich gives a (little) subset of the C <em>printf</em>.</li>
+</ul>
+
+<p>Here is an exemple :</p>
+
+<pre><code>(println "Hello" " - " '(1 2 3) " world") =&gt; "Hello - 1 2 3 world"
+(slprintf "%3d -&gt; 0x%02x\n" 128 128) =&gt; "128 0x80"
+</code></pre>
+
+<h3>
+<a id="user-content-println" class="anchor" href="#println" aria-hidden="true"><span class="octicon octicon-link"></span></a>println</h3>
+
+<p><strong>Usage</strong> :</p>
+
+<pre><code>(import (println))
+
+(println arg1 arg2 ...)
+</code></pre>
+
+<p><strong>Result</strong> : prints each <em>argn</em> one by one, without separation, ending with a newline.</p>
+
+<h3>
+<a id="user-content-slprintf" class="anchor" href="#slprintf" aria-hidden="true"><span class="octicon octicon-link"></span></a>slprintf</h3>
+
+<p><strong>Usage</strong> :</p>
+
+<pre><code>(import (slprintf))
+
+(slprintf format arg1 arg2 ...)
+</code></pre>
+
+<p><strong>Result</strong> : prints each <em>argn</em> according to the fromat string. This string accepts the following syntax :</p>
+
+<ul class="task-list">
+<li>%% : the #\% character,</li>
+<li>%s : consider the corresponding argument as a string,</li>
+<li>%c : consider the corresponding argument as a single character,</li>
+<li>%[d|x|b] : consider the corresponding argument as an integer, print it in base 10 for <strong>d</strong>, 16 for <strong>x</strong>, 2 for <strong>b</strong>.</li>
+</ul>
+
+<p>Integer formats can have a filler, <em>#\0</em> or <em>#\space</em>, and a length attributes from 0 to 9. </p>
+
+<p><strong>Exceptions</strong> : <em>slprintf</em> can raise an exception when the expected type does not corresond to the argument type (only for chars and integers).</p>
+
+<h2>
+<a id="user-content-tests" class="anchor" href="#tests" aria-hidden="true"><span class="octicon octicon-link"></span></a>tests</h2>
+
+<p>You can use the program <em>tst-sl-printf.scm</em> to test.</p>
+
+<p>With <em>Gauche</em> :</p>
+
+<pre><code>gosh -b -I. tst-sl-printf.scm
+</code></pre>
+
+<p>With Chicken :</p>
+
+<pre><code>make clean all &amp;&amp; ./tst-sl-printf
+</code></pre>
+
+<p><strong>Note</strong> : the <em>Makefile</em> constructs the test <em>and</em> the libs.</p>
+
+<p>With Chibi Scheme :</p>
+
+<pre><code>chibi-scheme tst-sl-printf.scm
+</code></pre>
+
+<p><strong>Note</strong> : you must do this before :</p>
+
+<pre><code>ln -s println.scm println.sld
+ln -s slprintf.scm slprintf.sld
+</code></pre>
+      </section>
+
+      <footer>
+      </footer>
+
+    </div>
+
+    
+  </body>
+</html>
+
