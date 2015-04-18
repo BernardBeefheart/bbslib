@@ -18,10 +18,10 @@
                 (* 1000.0 (current-second))))
 
         (define (run-test name thunk expect eq pass-msg fail-msg)
-          (guard (except (else
-                                           (begin
-                                                 (set! *fail* (+ *fail* 1))
-                                                 (format-result fail-msg name expect except))))
+          (guard (except (else 
+                          (begin 
+                            (set! *fail* (+ *fail* 1)) 
+                            (format-result fail-msg name expect except))))
 
                          (let ((result (thunk)))
                            (cond
