@@ -1,7 +1,14 @@
 ;; ========================================================================
-;; tst-sl-printf.scm
+;; test.scm
 ;; Usage :
-;; gosh -I. tst-sl-printf.scm
+;; gosh -I. -I../match test.scm
+;; sagittarius -L../match -L. test.scm
+;; chibi-scheme -I . -I ../match test.scm
+;; foment -I ../match  test.scm
+;; chicken : make clean all && ./test
+;; Note:
+;; chibi needs ln -s *.scm *.sld
+;; chicken needs : ln -s ../dir/*.so && ln -s format/*.so format.*.so
 ;; ========================================================================
 
 (import (scheme base) (scheme write) (slprintf) (println))
