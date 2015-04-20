@@ -11,7 +11,7 @@
 ;; chicken needs : ln -s ../dir/*.so && ln -s format/*.so format.*.so
 ;; ========================================================================
 
-(import (scheme base) (scheme write) (slprintf) (println))
+(import (scheme base) (slprintf) (println))
 
 (define number-loop
   (lambda (N)
