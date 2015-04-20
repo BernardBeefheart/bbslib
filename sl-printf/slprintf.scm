@@ -5,25 +5,10 @@
 (define-library 
   (slprintf)
   (export slprintf)
-  (import (scheme base) (scheme write) (scheme char) (println) (match-case-simple))
+  (import (scheme base) (scheme write) (scheme char) (println) (format format-int) (format format-char))
   (begin
 
-	(define format-int
-	  (lambda(value filler len base)
-		(if (not (integer? value))
-		  (raise "Integer expected")
-		  (let* ((s (number->string value base))
-				 (l (string-length s))
-				 (d (- len l)))
-			(if (> d 0)
-			  (string-append (make-string d filler) s)
-			  s)))))
-
-	(define format-char
-	  (lambda (value)
-		(match-case-simple value
-						   (,value (char? value) value)
-						   (__ () (raise "char expected")))))
+	
 
 	(define (slprintf format . all-args)
 	  (let ((lformat (string->list format))
