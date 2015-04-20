@@ -5,13 +5,13 @@
 (define-library 
   (format format-char)
   (export format-char)
-  (import (scheme base) (match-case-simple))
+  (import (scheme base) (bbmatch))
   (begin
 
     (define format-char
 	  (lambda (value)
-		(match-case-simple value
-						   (,value (char? value) value)
-						   (__ () (raise "char expected")))))
+		(match value
+           ((? char?) value)
+           (else (raise "char expected")))))
     
 ))
