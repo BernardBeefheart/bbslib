@@ -11,7 +11,7 @@
 ;; chicken needs : ln -s ../dir/*.so && ln -s format/*.so format.*.so
 ;; ========================================================================
 
-(import (scheme base) (slprintf) (println))
+(import (scheme base) (slprintf) (println) (exception))
 
 (define number-loop
   (lambda (N)
@@ -27,14 +27,14 @@
 	(number-loop 255)
     (slprintf "str %s(coucou) int %3d (5) le d ne passe %s (pas)?\n<EOL> mais si! hex %03x (23 -> 0x17) %c ('a')\n" 
 			   "coucou" 5 "pas" 23 #\a)
-	(guard (except (else (println "ERROR: " except)))
+	(guard (except (else (print-exception except)))
 		   (slprintf "with error : %d\n" "raté"))
-	(guard (except (else (println "ERROR: " except)))
+	(guard (except (else (print-exception except)))
 		   (slprintf "with error : %c\n" 32))
     (cond-expand
      (foment (println "No bad call test"))
      (else
-      (guard (except (else (println "ERROR, bad call: " except)))
+      (guard (except (else (print-exception except)))
 		   (format-char "Ho!"))))
 	(println "Fin du test!")))
 

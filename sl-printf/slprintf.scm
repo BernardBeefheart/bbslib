@@ -5,7 +5,7 @@
 (define-library 
   (slprintf)
   (export slprintf)
-  (import (scheme base) (scheme write) (scheme char) (println) 
+  (import (scheme base) (scheme write) (scheme char) (println) (exception)
           (format format-string) (format format-int) (format format-char))
   (begin
 
@@ -52,7 +52,10 @@
 						   ((#\c) (if in-format
 									(display-and-deformat (format-char (car args)) lst-of-chars (cdr args))
 									(on-else c lst-of-chars args)))
-						   (else (display-and-deformat c lst-of-chars args))))
+						   (else
+                            (if in-format
+                                (raise-exception 'ERROR 'sl-printf "Bad format definition")
+                                (display-and-deformat c lst-of-chars args)))))
 					   #t))))
 		  (deformat lformat all-args #f default-filler default-len))))
 

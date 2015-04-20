@@ -5,7 +5,7 @@
 (define-library 
   (format format-string)
   (export format-string)
-  (import (scheme base) (bbmatch))
+  (import (scheme base) (bbmatch) (exception))
   (begin
 
 	(define format-string
@@ -19,6 +19,6 @@
                   (string-append (make-string d filler) s)
                   s)))
                (else
-                  (raise "String expected")))))
+                  (raise-exception 'ERROR 'format-string "String expected")))))
 
   ))
