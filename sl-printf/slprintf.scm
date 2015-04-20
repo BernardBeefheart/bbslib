@@ -17,8 +17,6 @@
 			(default-len -1))
 		(letrec ((display-and-deformat
 				   (lambda(strs lst-of-chars args)
-					 #|(when strs
-					   (for-each display strs))|#
                      (display strs)
 					 (deformat (cdr lst-of-chars) args #f default-filler default-len)))
 				 (on-else

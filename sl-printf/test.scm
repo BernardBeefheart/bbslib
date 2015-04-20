@@ -24,8 +24,11 @@
 		   (slprintf "with error : %d\n" "raté"))
 	(guard (except (else (println "ERROR: " except)))
 		   (slprintf "with error : %c\n" 32))
-	(guard (except (else (println "ERROR, bad call: " except)))
-		   (format-char "Ho!"))
+    (cond-expand
+     (foment (println "No bad call test"))
+     (else
+      (guard (except (else (println "ERROR, bad call: " except)))
+		   (format-char "Ho!"))))
 	(println "Fin du test!")))
 
 
