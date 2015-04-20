@@ -1,12 +1,12 @@
 # ======================================================================
 # Makefile 
-# for test
+# for tester
 # ======================================================================
 #
 
-SOURCES = bbmatch.scm
+SOURCES = tester.scm
 MAIN = test.scm
 EXE = test
-CSCFLAGS = -include-path ../../sl-printf -include-path ../../tester -R chicken-syntax
+CSCFLAGS = -include-path ../sl-printf
 
-include ../../mk/chicken-r7rs.mk
+include ../mk/chicken-r7rs.mk

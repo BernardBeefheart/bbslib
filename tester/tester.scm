@@ -85,6 +85,8 @@
                     '("(FAIL)" name ": expected " expect " but got " result)))
 
         (define (test-begin . o)
+          (for-each display o)
+          (newline)
           (set! *pass* 0)
           (set! *fail* 0)
           (set! *start* (current-milliseconds)))
