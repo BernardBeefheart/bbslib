@@ -28,7 +28,7 @@
         ((exception? exception) (println (exception-type exception) ": " 
                                          (exception-source exception) " - " 
                                          (exception-text exception)))
-        (else (println "ERROR of unknown type: " exception)))))
+        (else (println "ERROR of unexpected type: " exception)))))
    
    ))
  
