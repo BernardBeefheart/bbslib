@@ -15,7 +15,13 @@
 ;;; (sorted?, merge, merge!, sort, sort!): Call KEY arg at most once
 ;;; per element.
 
-(require 'array)
+(define-library
+ (srfi-95-sort)
+ (import (scheme base) (srfi-47-arrays))
+ (export sorted? merge merge! sort! sort)
+ (begin
+
+(define identity (lambda(l) l))
 
 ;;; (sorted? sequence less?)
 ;;; is true when sequence is a list (x0 x1 ... xm) or a vector #(x0 ... xm)
@@ -192,3 +198,5 @@
 	       ((null? sorted) newra)
 	     (array-set! newra (car sorted) i))))
 	(else (sort:sort-list! (append seq '()) less? key))))
+
+))

@@ -20,53 +20,52 @@
 ;;@code{(require 'array)} or @code{(require 'srfi-63)}
 ;;@ftindex array
 
-(require 'record)
-(require 'multiarg-apply)
+(define-library
+ (srfi-47-arrays)
+ (import (scheme base))
+ (export _array-store! array? array-dimensions array-ref array-set! make-array)
+ (begin
 
-(define array:rtd
-  (make-record-type "array"
-		    '(dimensions
-		      scales		;list of dimension scales
-		      offset		;exact integer
-		      store		;data
-		      )))
+(define (slib:error . symbols)
+  (raise symbols))
+
+(define-record-type _array
+  (_make-array dimensions scales offset store)
+  _array?
+  (dimensions _array-dimensions _array-dimensions!)
+  (scales _array-scales _array-scales!)
+  (offset _array-offset _array-offset!)
+  (store _array-store _array-store!))
+  
 
 (define array:dimensions
-  (let ((dimensions (record-accessor array:rtd 'dimensions)))
     (lambda (array)
       (cond ((vector? array) (list (vector-length array)))
 	    ((string? array) (list (string-length array)))
-	    (else (dimensions array))))))
-
+	    (else (_array-dimensions array)))))
+   
 (define array:scales
-  (let ((scales (record-accessor array:rtd 'scales)))
     (lambda (obj)
       (cond ((string? obj) '(1))
 	    ((vector? obj) '(1))
-	    (else (scales obj))))))
+	    (else (_array-scales obj)))))
 
 (define array:store
-  (let ((store (record-accessor array:rtd 'store)))
     (lambda (obj)
       (cond ((string? obj) obj)
 	    ((vector? obj) obj)
-	    (else (store obj))))))
+	    (else (_array-store obj)))))
 
 (define array:offset
-  (let ((offset (record-accessor array:rtd 'offset)))
     (lambda (obj)
       (cond ((string? obj) 0)
 	    ((vector? obj) 0)
-	    (else (offset obj))))))
-
-(define array:construct
-  (record-constructor array:rtd '(dimensions scales offset store)))
+	    (else (_array-offset obj)))))
 
 ;;@args obj
 ;;Returns @code{#t} if the @1 is an array, and @code{#f} if not.
 (define array?
-  (let ((array:array? (record-predicate array:rtd)))
-    (lambda (obj) (or (string? obj) (vector? obj) (array:array? obj)))))
+    (lambda (obj) (or (string? obj) (vector? obj) (_array? obj))))
 
 ;;@noindent
 ;;@emph{Note:} Arrays are not disjoint from other Scheme types.
@@ -182,7 +181,7 @@
 		      (apply make-vector tcnt initializer))))
 	     (define (loop dims scales)
 	       (if (null? dims)
-		   (array:construct dimensions (cdr scales) 0 store)
+		   (_make-array dimensions (cdr scales) 0 store)
 		   (loop (cdr dims)
 			 (cons (* (car dims) (car scales)) scales))))
 	     (loop (reverse dimensions) '(1)))))))
@@ -223,7 +222,7 @@
        (uvts '() (cons uvt uvts)))
       ((negative? idx)
        (let ((ker0 (apply + (map * odl (apply mapper uvt)))))
-	 (array:construct
+	 (_make-array
 	  (map (lambda (dim) (+ 1 (- (cadr dim) (car dim)))) shape)
 	  (map (lambda (uvt) (- (apply + (map * odl (apply mapper uvt))) ker0))
 	       uvts)
@@ -515,3 +514,5 @@
 ;;Returns a boolean uniform-array prototype.
 ;;@end defun
 (define A:bool (make-prototype-checker 'A:bool boolean? vector))
+
+   ))
