@@ -40,38 +40,35 @@
 ; Others are more pressing, like define-macro.
 ;
 ;
-(define what-scheme-implementation
-  'mzscheme
- ;'mit
- ;'chez
- ;'scm
- ;'scheme48         ; Scheme 48 requires that you do:
- )                  ;    ,open big-scheme
-                    ; before loading this file, in order
-                    ;for sort-list to be defined.
 
+(define-library 
+ (support)
+ (import (scheme base))
+(cond-expand
+ ((or foment sagittarius) (import (sort)))
+ ((or chibi gosh) (import (srfi 95)))
+ (else '()))
+ (export gsort simple-printer ??? list* apply* 
+         position-of map-append last every remove getl union
+         collect-if remove-duplicates compute-std-cpl
+         top-sort std-tie-breaker build-transitive-closure build-constraints)
+ (begin
 
-#|
-(case what-scheme-implementation
-  ((scm)
-   (require 'sort)))
-|#
 
 (define gsort
-  (case what-scheme-implementation
-    ((mit mzscheme)      (lambda (predicate list) (sort list predicate)))
-    ((chez)     (lambda (predicate list) (sort predicate list)))
-    ((scheme48) (lambda (predicate list) (sort-list predicate list)))
-    ((scm)      (lambda (predicate list) (sort list predicate)))))
+  (cond-expand
+    ((or foment sagittarius) (lambda(predicate list) (merge-sort predicate list)))
+    ((or chibi gosh)     (lambda(predicate list) (sort list predicate)))
+    (else     '())))
 
 
 
-(define simple-printer (lambda () barf))
 
 
 
 
 (define ??? 'unspecified-result)
+(define simple-printer (lambda () ???))
 
 (define list*
   (lambda args
@@ -259,3 +256,5 @@
 		     (cdr this-one)
 		     (cons (list (car this-one) (cadr this-one))
 			   result)))))))
+
+))

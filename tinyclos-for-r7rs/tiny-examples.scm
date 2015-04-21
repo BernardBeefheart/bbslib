@@ -80,7 +80,7 @@
 ;
 ;
 
-(define <pos>)
+(define <pos> '())
 (define pos-x (make-generic))
 (define pos-y (make-generic))
 (define move  (make-generic))
@@ -218,11 +218,10 @@
 			    (cdr entry))))
 		    (lambda (o new)
 		      (let* ((alist (alist-getter o))
-			     (entry (assq name alist)))
-			(if (null? entry)
-			    (alist-setter o
-			                  (cons (cons name new) alist))
-			    (set-cdr! entry new))
+                     (entry (assq name alist)))
+                (if (null? entry)
+                    (alist-setter o (cons (cons name new) alist))
+                    (set-cdr! entry new)) ;; !! R7RS plante ici !!
 			new))))))))
 
 

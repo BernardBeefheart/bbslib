@@ -71,6 +71,15 @@
 ;
 ;
 ;       
+(define-library
+ (tiny-clos)
+ (import (scheme base) (support))
+ (export make-class make-generic make-method add-method make initialize slot-ref slot-set!
+         class-of class-slots
+         compute-getter-and-setter
+         <object> <class>)
+ (begin
+   
 (define tiny-clos-version "1.7")
 
 '(;Stuff to make emacs more reasonable.
@@ -187,7 +196,7 @@
 ; my understanding of the CL world...  I hope it is right.
 ;
 ;
-(load "support")
+;; (load "./support.scm")
 
 ;
 ; Then, we need to build what, in a more real implementation, would be
@@ -627,10 +636,10 @@
       (lambda (call-next-method generic)
 	(lambda args
 	  (if (and (memq generic generic-invocation-generics)     ;* G  c
-		   (memq (car args) generic-invocation-generics)) ;* r  a
+		   (memq (car args) generic-invocation-generics))     ;* r  a
 	      (apply (method-procedure                            ;* o  s
-		      (last (generic-methods generic)))           ;* u  e
-		     (cons #f args))                              ;* n
+		      (last (generic-methods generic)))               ;* u  e
+		     (cons #f args))                                  ;* n
 	                                                          ;* d
 	      ((compute-apply-methods generic)
 	       ((compute-methods generic) args)
@@ -883,3 +892,4 @@
 ;
 
 'tiny-clos-up-and-running
+))
