@@ -20,6 +20,8 @@
         ((default-len) -1)))
     
 	(define (slprintf format . all-args)
+      (when (not (string? format))
+        (raise-exception 'ERROR 'sl-printf "format must be a string"))
 	  (let ((lformat (string->list format)))
 		(letrec ((display-and-deformat
 				   (lambda(strs lst-of-chars args)
