@@ -73,7 +73,7 @@
 ;       
 (define-library
   (tiny-clos)
-  (import (scheme base) (tinyclos-support))
+  (import (scheme base) (tinyclos-support) (println))
   (export make-class make-generic make-method add-method make initialize slot-ref slot-set!
 		  class-of class-slots
 		  compute-getter-and-setter
@@ -277,6 +277,8 @@
 	  (set! %instance-class
 		(lambda (closure)
 		  (let ((vector (get-vector closure)))
+            (when (not (vector? vector))
+              (println "closure " closure " is not a vector"))
 			(vector-ref vector 2))))
 
 	  (set! %set-instance-class-to-self
