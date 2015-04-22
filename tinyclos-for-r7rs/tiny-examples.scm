@@ -27,6 +27,7 @@
 ; Metaobject Protocol).
 ;
 
+(import (scheme base) (tinyclos-support))
 ;***
 ;
 ; This is a useful sort of helper function.  Note how it uses the

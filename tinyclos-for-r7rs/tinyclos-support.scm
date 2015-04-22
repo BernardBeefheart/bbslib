@@ -1,5 +1,7 @@
 ; Mode: Scheme
-;
+;; ========================================================================
+;; tinyclos-support.scm
+;; ========================================================================
 ;
 ; *************************************************************************
 ; Copyright (c) 1992 Xerox Corporation.  
@@ -42,7 +44,7 @@
 ;
 
 (define-library 
-  (support)
+  (tinyclos-support)
   (import (scheme base))
   (cond-expand
 	((or foment sagittarius) (import (srfi-95-sort)))

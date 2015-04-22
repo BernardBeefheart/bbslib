@@ -73,7 +73,7 @@
 ;       
 (define-library
   (tiny-clos)
-  (import (scheme base) (support))
+  (import (scheme base) (tinyclos-support))
   (export make-class make-generic make-method add-method make initialize slot-ref slot-set!
 		  class-of class-slots
 		  compute-getter-and-setter
