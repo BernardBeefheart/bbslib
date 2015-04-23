@@ -1,9 +1,9 @@
 ;; ======================================================================
-;; sort.scm
+;; merge-sort.scm
 ;; ======================================================================
 
 (define-library
-  (sort)
+  (merge-sort)
   (import (scheme base))
   (export merge-sort)
   (begin

@@ -47,7 +47,7 @@
   (tinyclos-support)
   (import (scheme base))
   (cond-expand
-	((or foment sagittarius) (import (sort)))
+	((or foment sagittarius) (import (merge-sort)))
 	((or chibi gosh) (import (srfi 95)))
 	(else '()))
   (export gsort simple-printer ??? list* apply* 
