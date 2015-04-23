@@ -81,7 +81,11 @@
 |#
 
 (defmethod <pos-3d> reset-to-origin #t (self)
-  (call-next-method)
+  ;; l'appel à call-next-method provoque un :
+  ;; undefined variable: call-next-method
+  ;; (call-next-method)
+  (set-x! self 0)
+  (set-y! self 0)
   (set-z! self 0))
 
 
