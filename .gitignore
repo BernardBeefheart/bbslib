@@ -11,7 +11,8 @@
 *.komodoproject
 /.project
 *.import.scm
-
+existing-libs/
+core
 test
 
 make-chicken-units/make-chicken-units
