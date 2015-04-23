@@ -4,7 +4,7 @@
 ;; ========================================================================
 
 
-(import (scheme base) (tinyclos-support) (more-clos) (tester) (println))
+(import (scheme base) (tinyclos-support) (tiny-clos) (more-clos) (tester) (println))
 
 (test-begin "\n\n" "*** testing tinyclos ***")
 
@@ -80,12 +80,8 @@
   (set-z! self 0))
 |#
 
-(defmethod <pos-3d> reset-to-origin #t (self)
-  ;; l'appel à call-next-method provoque un :
-  ;; undefined variable: call-next-method
-  ;; (call-next-method)
-  (set-x! self 0)
-  (set-y! self 0)
+(defmethod <pos-3d> reset-to-origin call-next-method (self)
+  (call-next-method)
   (set-z! self 0))
 
 

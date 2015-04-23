@@ -1,10 +1,12 @@
 ;; ========================================================================
 ;; more-clos.scm
+;; a set of fonctions and macros which helps declarations
+;; of class, generic and method
 ;; ========================================================================
 
 (define-library
   (more-clos)
-  (import (scheme base) (tinyclos-support) (tiny-clos) (tester) (println))
+  (import (scheme base) (tinyclos-support) (tiny-clos))
   (export initialize-slots defclass defgeneric defgetter defsetter defmethod)
   (begin
 
@@ -29,6 +31,8 @@
 							(slot-set! object name value)))))
 					(class-slots (class-of object))))))
 
+	;***
+	;
 	(define-syntax defclass
 	  (syntax-rules ()
 					((defclass class (parents ...) (fields ...))
@@ -45,6 +49,8 @@
 									   (initialize-slots self initargs))))
 					   ))))
 
+	;***
+	;
 	(define-syntax defgeneric
 	  (syntax-rules ()
 					((_ fgeneric)
@@ -58,6 +64,8 @@
 									  fgeneric)
 									(make-generic)))))))))
 
+	;***
+	;
 	(define-syntax defgetter
 	  (syntax-rules ()
 					((_ class slot-name getter-name)
@@ -68,6 +76,8 @@
 												(lambda (call-next-method obj) 
 												  (slot-ref obj slot-name))))))))
 
+	;***
+	;
 	(define-syntax defsetter
 	  (syntax-rules ()
 					((_ class slot-name setter-name)
@@ -78,6 +88,8 @@
 												(lambda (call-next-method obj value) 
 												  (slot-set! obj slot-name value))))))))
 
+	;***
+	;
 	(define-syntax defmethod
 	  (syntax-rules (call-next-method)
 					((defmethod class method-name #t (args ...) body ...)
@@ -95,8 +107,13 @@
 								   (make-method (list class)
 												(lambda (call-next-method args ...)
 												  body ...)))))
-					((defmethod class method-name call-next? (args ...) body ...)
-					 (syntax-error "call-next? must be #t or #f, got " call-next?))
+					((defmethod class method-name my-call-next-method (args ...) body ...)
+					 (begin
+					   (defgeneric method-name)
+					   (add-method method-name
+								   (make-method (list class)
+												(lambda (my-call-next-method args ...)
+												  body ...)))))
 					))
 
 	)
