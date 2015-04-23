@@ -68,17 +68,18 @@
 ; guile 2.0.11
 ;    4
 ; gambit 4.7.4
-;    
 ;    ERROR IN "syntax-rule-dark-corner.scm"@18.17 -- Ill-formed expression
 ; mzscheme 6.1.1
+;	 3
+; mit-scheme 9.2
 ;	 3
 ; ------------------------------------------------------
 ; with r7rs
 ; Chibi Scheme
 ;	 3
-; foment
-;	 syntax-violation define "define: ...
-;	 syntax-violation lambda
+; foment: run an interactive session (foment -i),
+; import (scheme base) and load this file
+;	 4
 ; gosh :
 ;	 4
 ; sagittarius
