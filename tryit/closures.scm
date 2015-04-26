@@ -4,13 +4,16 @@
 
 (define-library
   (closures)
-  (import (scheme base) (println))
+  (import (scheme base) (scheme write) (println))
   (export test1)
   (begin
 
-	(define (println . l)
-	  (for-each display l)
-	  (newline))
+	(cond-expand
+	  ((not r7rs)
+	   (define (println . l)
+		 (for-each display l)
+		 (newline)))
+	  (else '()))
 
 	(define counter
 	  (lambda (name)
@@ -31,10 +34,17 @@
 	  (syntax-rules ()
 					((defcounter name)
 					 (define name (counter 'name)))))
-	(define-syntax send->counter
+
+	(define-syntax send->counter*
 	  (syntax-rules ()
 					((send->counter name method)
-					 (name method))))
+					 (guard (e (else (println "ERROR: " e " !!")))
+							(name method)))))
+
+	(define send->counter
+	  (lambda (name method)
+		(guard (e (else (println "ERROR: " e " !!")))
+			   (name method))))
 
 	(define-syntax display->counter
 	  (syntax-rules ()
@@ -48,6 +58,7 @@
 		(display->counter c--)
 		(send->counter c++ 'inc)
 		(send->counter c-- 'dec)
+		(send->counter c-- 'pipo)
 		(display->counter c++)
 		(display->counter c--)
 		(send->counter c++ 'inc)
