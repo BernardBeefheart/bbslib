@@ -2,7 +2,9 @@
 ;; records.scm
 ;; ======================================================================
 
-(import (scheme base) (scheme inexact) (println))
+(cond-expand
+  (r7rs (import (scheme base) (scheme inexact) (println)))
+  (else '()))
 
 (define-record-type <point>
   (make-point x y)           ;; constructeur

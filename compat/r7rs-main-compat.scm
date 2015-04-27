@@ -57,9 +57,31 @@
 							  (lambda () 
 								body)
 							  (lambda (exception . args)
-								(when (not done) on-error))
+								(when (not done) 
+								  on-error))
 							  (lambda (exception  . args)
 								(set! done #t)
 								on-error)))))))
 
 	(else '()))
+
+(cond-expand
+  ((not r7rs)
+   (define inexact exact->inexact))
+  (else '()))
+
+(cond-expand
+  ((or mit gambit)
+	(define-syntax when
+	  (syntax-rules ()
+					((when condition body ...)
+					 (if condition
+					   (begin
+						 body ...)
+					   #f))))
+	)
+	(else '()))
+
+(cond-expand
+  (guile (use-modules (srfi srfi-9)))
+  (else '()))
