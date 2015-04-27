@@ -4,8 +4,8 @@
 
 (define-library
   (closures)
-  (import (scheme base) (scheme write) (println))
   (export test1)
+  (import (scheme base) (scheme write) (println))
   (begin
 
 	(cond-expand

@@ -1,6 +1,6 @@
 ;; ======================================================================
+;; define-library.scm
 ;; pas de cond-expand pour mzscheme,
-;; guile : le guard ne fonctionne pas !!!
 ;; ======================================================================
 
 (cond-expand
@@ -19,7 +19,6 @@
 (cond-expand
   (gambit
 	;; gambit
-	(display 'gambit) (newline)
 	(define-syntax guard
 	  (syntax-rules (else)
 					((guard (exception (else on-error)) body)
@@ -30,7 +29,6 @@
 						 body))))))
   (mit
 	;; mit-scheme
-	(display 'mit) (newline)
 	(define-syntax raise
 	  (syntax-rules ()
 					((raise exception)
@@ -45,7 +43,7 @@
 											 (lambda () 
 											   body))))))
   (guile
-	(display 'guile) (newline)
+	;; guile
 	(define-syntax raise
 	  (syntax-rules ()
 					((raise exception)
@@ -55,13 +53,13 @@
 	  (syntax-rules (else)
 					((guard (exception (else on-error)) body)
 					 (let ((done #f))
-					 (catch #t
-							(lambda () 
-							  body)
-							(lambda (exception . args)
-							  (when (not done) on-error))
-							(lambda (exception  . args)
-							  (set! done #t)
-							  on-error)))))))
+					   (catch #t
+							  (lambda () 
+								body)
+							  (lambda (exception . args)
+								(when (not done) on-error))
+							  (lambda (exception  . args)
+								(set! done #t)
+								on-error)))))))
 
 	(else '()))
