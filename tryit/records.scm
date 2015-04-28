@@ -3,8 +3,9 @@
 ;; ======================================================================
 
 (cond-expand
-  (r7rs (import (scheme base) (scheme inexact) (println)))
-  (else '()))
+  (guile
+	(use-modules (sl-printf println)))
+  (else (import (scheme base) (scheme inexact) (println))))
 
 (define-record-type <point>
   (make-point x y)           ;; constructeur

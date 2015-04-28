@@ -4,10 +4,47 @@
 ;; ======================================================================
 
 (cond-expand
+  (guile
+
+   (define-syntax import
+	 (syntax-rules()
+	   ((import (dir module))
+		(use-modules (dir module)))
+	   ((import module ...)
+			(use-modules module ...))))
+   
+   (define-syntax define-library
+	 (lambda(x)
+	   (syntax-case x ()
+					((_ libname (import libs ...) (export funcs ...) body)
+					 #'(begin
+						 (define-module libname)
+						 (import libs ...)
+						 (use-modules libs ...)
+						 (export funcs ...)))
+					((_ libname (export funcs funcs* ...) (import libs ...) body)
+					 #'(begin
+						 (define-module libname)
+						 (import libs ...)
+						 (use-modules libs ...)
+						 (export funcs funcs* ...)))
+					)))
+
+	)
   ((not r7rs)
 
+   (define-syntax import
+	 (syntax-rules()
+	   ((import lst ...)
+		'())))
+   
+   (define-syntax export
+	 (syntax-rules()
+	   ((export lst ...)
+		'())))
+
    (define-syntax define-library
-	 (syntax-rules (import export)
+	 (syntax-rules ()
 				   ((_ (libname) (import libs ...) (export funcs ...) body)
 					body)
 				   ((_ (libname) (export funcs ...) (import libs ...) body)
