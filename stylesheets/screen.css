@@ -251,6 +251,7 @@ footer {
 }
 
 footer > p:first-child {
+	padding-top: 12px;
 	border-top: 5px double #7C334F;
 }
 
