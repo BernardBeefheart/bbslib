@@ -27,7 +27,6 @@ function load_page(page, on_end_load, place) {
 $(document).ready(
 	function () {
 		var page0 = $.urlParam('page');
-		$('#main_content').headsmart();
 		load_page(page0, null, 'article');
 		load_page('content', 
 				  function(result){
