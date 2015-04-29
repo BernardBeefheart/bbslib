@@ -30,7 +30,7 @@ $(document).ready(
 		load_page(page0, null, 'article');
 		load_page('content', 
 				  function(result){
-					  $('#toc a').each(function( index, element ) {
+					  $('menu a').each(function( index, element ) {
 						  var lpage = $.urlParam('page', $( element ).attr('href'));
 						  if (lpage == page0) {
 							  var title = 'bbslib: ' + $(element).html();
@@ -39,7 +39,7 @@ $(document).ready(
 							  $(element).addClass('current-node');
 						  }
 					  })
-		  }, '#toc');
+		  }, 'menu');
 		load_page('footer', null, 'footer');
 	}
 );
