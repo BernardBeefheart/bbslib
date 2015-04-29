@@ -140,91 +140,58 @@ header {
   position: relative;
   z-index: 2;
   margin: 0 auto;
-  max-width: 600px;
+  width: 100%;
   top: 38px;
+  background-color: #ffc000;
 }
 
-header span.ribbon-inner {
-  position: relative;
-  display: block;
-  background-color: #cd596b;
-  border: 4px solid #7c334f;
-  padding: 2px;
-  z-index: 1;
-}
-
-header span.left-tail, header span.right-tail {
-  position: relative;
-  display: block;
-  width: 56px;
-  height: 105px;
-  background: transparent url(../images/ribbon-tail-sprite.png) 0 0 no-repeat;
-  position: absolute;
-  bottom: -37px;
-  z-index: 0;
-}
-
-header span.left-tail {
-  background-position: 0 0;
-  left: -31px;
-}
-
-header span.right-tail {
-  background-position: -56px 0;
-  right: -31px;
-}
 
 header h1 {
-  background-color: #7c334f;
+  /* background-color: #7c334f; */
+  background-color: transparent;
   font-size: 2.5em;
   font-weight: 800;
   font-style: normal;
   text-transform: uppercase;
-  color: #ece4d8;
+  color: #ff5458;
   text-align: center;
   line-height:1;
   padding: 14px 20px 0;
 }
 
 header h2 {
-  background-color: #7c334f;
+  /* background-color: #7c334f; */
+  background-color: transparent;
   font: bold italic .85em/1.5 Georgia, Times, “Times New Roman”, serif;
-  color: #e69b95;
+  color: #ff5458;
   padding-bottom: 14px;
   margin-top: -3px;
   text-align: center;
 }
 
-section#downloads,
-div#no-downloads {
+section#downloads {
   position: relative;
-  display: block;
+  display: table;
   height: 197px;
-  width: 550px;
+  width: 100%;
   padding-bottom: 150px;
   margin: -80px auto -150px;
   z-index: 1;
-  background: transparent url(../images/bg-ramp.jpg) center 171px no-repeat;
+  /* background: transparent url(../images/bg-ramp.jpg) center 171px no-repeat; */
 }
 
-div#no-downloads span.inner {
-  display: block;
-  position: relative;
-  height: 197px;
-  width: 550px;
-  background: transparent url(../images/download-sprite.png) 0 0 no-repeat;
-}
 
 section#downloads a {
-  display: block;
+  display: table-cell;
   position: relative;
   height: 67px;
-  width: 275px;
+  width: 50%;
   padding-top: 130px;
-  background: transparent url(../images/download-sprite.png) 0 0 no-repeat;
+  /* background: transparent url(../images/download-sprite.png) 0 0 no-repeat; */
+  background-color: #ffc000;
   text-align: center;
   line-height: 1;
-  color: #fff;
+  color: #e69b95;
   font-family: 'Open Sans', Myriad, Calibri, sans-serif;
   font-weight: 800;
   font-size: 1.3em;
@@ -258,8 +225,8 @@ section#downloads a.tgz:hover {
   background-position: -275px -197px;
 }
 
-span.banner-fix {
-  background: transparent url(../images/download-fallback-bg.png) center top no-repeat;
+.banner-fix {
+  /* background: transparent url(../images/download-fallback-bg.png) center top no-repeat; */
   display: block;
   height: 19px;
   position: absolute;
@@ -276,7 +243,7 @@ section#main_content {
 /* footer */
 
 footer {
-  background: transparent url(../images/footer-ramp.jpg) center -1px no-repeat;
+  /* background: transparent url(../images/footer-ramp.jpg) center -1px no-repeat; */
   padding-top: 104px;
   margin: -94px auto 40px;
   max-width: 560px;
@@ -337,7 +304,7 @@ footer span.left-tail, footer span.right-tail {
   display: block;
   width: 18px;
   height: 29px;
-  background: transparent url(../images/small-ribbon-tail-sprite.png) 0 0 no-repeat;
+  /* background: transparent url(../images/small-ribbon-tail-sprite.png) 0 0 no-repeat; */
   position: absolute;
   bottom: 5px;
   z-index: 0;
@@ -354,7 +321,7 @@ footer span.right-tail {
 }
 
 footer span.octocat {
-  background: transparent url(../images/octocat.png) 0 0 no-repeat;
+  /* background: transparent url(../images/octocat.png) 0 0 no-repeat; */
   display: block;
   width: 30px;
   height: 30px;
@@ -420,7 +387,7 @@ menu ul li {
 }
 
 article ul {
-  margin: .7em 0;
+  /* margin: .7em 0; */
   padding-left: 1.35em;
 }
 
