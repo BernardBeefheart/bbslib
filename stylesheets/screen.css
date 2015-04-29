@@ -149,11 +149,11 @@ header {
 header h1 {
   /* background-color: #7c334f; */
   background-color: transparent;
-  font-size: 2.5em;
+  font-size: 3.5em;
   font-weight: 800;
   font-style: normal;
   text-transform: uppercase;
-  color: #ff5458;
+  color: #a33;
   text-align: center;
   line-height:1;
   padding: 14px 20px 0;
@@ -191,7 +191,7 @@ section#downloads a {
   background-color: #ffc000;
   text-align: center;
   line-height: 1;
-  color: #e69b95;
+  color: #a33;
   font-family: 'Open Sans', Myriad, Calibri, sans-serif;
   font-weight: 800;
   font-size: 1.3em;
@@ -203,7 +203,7 @@ section#downloads a:hover {
 
 section#downloads a em {
   font: bold italic 12px/1 Georgia, Times, “Times New Roman”, serif;
-  color: #83b7da;
+  color: #700;
   display: block;
 }
 
@@ -250,19 +250,8 @@ footer {
   text-align: center;
 }
 
-footer span.ribbon-outer {
-  display: block;
-  position: relative;
-  border-bottom: 2px solid #bdb6ad;
-}
-
-footer span.ribbon-inner {
-  position: relative;
-  display: block;
-  background-color: #cd596b;
-  border: 2px solid #7c334f;
-  padding: 1px;
-  z-index: 1;
+footer > p:first-child {
+	border-top: 5px double #7C334F;
 }
 
 footer p {
@@ -276,50 +265,6 @@ footer a {
   color: #cd596b;
 }
 
-footer span.ribbon-inner p {
-  background-color: #7c334f;
-  margin: 0;
-  color: #e69b95;
-  font: bold italic 12px/1 Georgia, Times, “Times New Roman”, serif;
-  padding-bottom:4px;
-}
-
-footer span.ribbon-inner a {
-  position: relative;
-  bottom: -1px;
-  color: #7eb0d2;
-  font-family: 'Open Sans', Myriad, Calibri, sans-serif;
-  text-transform: uppercase;
-  font-style: normal;
-  font-weight: 800;
-  font-size: 1.2em;
-}
-
-footer span.ribbon-inner a:hover {
-  color: #7eb0d2;
-}
-
-footer span.left-tail, footer span.right-tail {
-  position: relative;
-  display: block;
-  width: 18px;
-  height: 29px;
-  /* background: transparent url(../images/small-ribbon-tail-sprite.png) 0 0 no-repeat; */
-  position: absolute;
-  bottom: 5px;
-  z-index: 0;
-}
-
-footer span.left-tail {
-  background-position: 0 0;
-  left: -11px;
-}
-
-footer span.right-tail {
-  background-position: -18px 0;
-  right: -11px;
-}
-
 footer span.octocat {
   /* background: transparent url(../images/octocat.png) 0 0 no-repeat; */
   display: block;
@@ -331,7 +276,7 @@ footer span.octocat {
 /* content */
 
 body {
-  background: #ece4d8;
+  background: #ffc;
   font: normal normal 15px/1.5 Georgia, Palatino,” Palatino Linotype”, Times, “Times New Roman”, serif;
   color: #544943;
   -webkit-font-smoothing: antialiased;
@@ -422,15 +367,16 @@ hr {
 }
 
 code {
-  background: #fff6e9;
   font: normal normal .8em/1.7 "Lucida Sans Typewriter", "Lucida Console", Monaco, "Bitstream Vera Sans Mono", monospace;
   padding: 0 5px 1px;
+  font-weight: bold;
+  font-style: italic;
 }
 
 pre {
   margin: 10px 0 20px;
   padding: .7em;
-  background: #fff6e9;
+  background: #cc9;
   border-bottom: 2px solid #bdb6ad;
   font: normal normal .9em/1.7 "Lucida Sans Typewriter", "Lucida Console", Monaco, "Bitstream Vera Sans Mono", monospace;
   overflow: auto;
@@ -555,6 +501,7 @@ article {
 	font-family: 'Open Sans', Myriad, Calibri, sans-serif;
 	text-align: justify;
 }
+
 
 menu {
 	font-family: 'Open Sans', Myriad, Calibri, sans-serif;
