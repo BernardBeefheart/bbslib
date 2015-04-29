@@ -595,7 +595,7 @@ menu {
 	margin: 15px;
 	border: 1px solid #bbb;
 	float: left;
-	/* overflow: hidden; */
+	word-break: break-all;
 }
 
 article h3 {
