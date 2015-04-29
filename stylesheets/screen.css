@@ -569,9 +569,8 @@ h3, .header-level-3 {
 }
 
 /* my ads */
-#main_content p,
-#main_content li,
-#main_content blockquote {
+
+article {
 	text-align: justify;
 }
 
@@ -592,6 +591,7 @@ footer {
 	clear: both;
 }
 
-.italic {
+.current-node {
 	font-style: italic;
+	font-weight: bold;
 }

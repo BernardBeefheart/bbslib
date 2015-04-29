@@ -9,11 +9,17 @@ $.urlParam = function(name, url) {
 	return results[1] || 'index';
 }
 
-function load_html(file_name, on_end_load) {
+function load_page(page, on_end_load, place) {
+	var file_name = '/bbslib/pages/bbslib/' + page + '.html';
 	$.ajax(
 		{
 			url: file_name,
-			success: on_end_load
+			success: function(result) {
+				$(place).html(result);
+				if (on_end_load) {
+					on_end_load(result);
+				}
+			}
 		}
 	);
 }
@@ -21,31 +27,21 @@ function load_html(file_name, on_end_load) {
 $(document).ready(
 	function () {
 		var page0 = $.urlParam('page');
-		var page = '/bbslib/pages/bbslib/' + page0 + '.html';
 		$('#main_content').headsmart();
-		load_html(page,
-				 function (result) {
-					 $('article').html(result);
-				 }
-	 );
-		load_html('/bbslib/pages/bbslib/content.html', 
+		load_page(page0, null, 'article');
+		load_page('content', 
 				  function(result){
-					  $('#toc').html(result);
-					  $('#toc ul li a').each(function( index, element ) {
+					  $('#toc a').each(function( index, element ) {
 						  var lpage = $.urlParam('page', $( element ).attr('href'));
 						  if (lpage == page0) {
 							  var title = 'bbslib: ' + $(element).html();
 							  $('#main_title').html(title);
 							  document.title = title;
-							  $(element).addClass('italic');
+							  $(element).addClass('current-node');
 						  }
 					  })
-	  });
-		load_html('/bbslib/pages/bbslib/footer.html',
-				 function (result) {
-					 $('footer').html(result);
-				 }
-	 );
+		  }, '#toc');
+		load_page('footer', null, 'footer');
 	}
 );
 
