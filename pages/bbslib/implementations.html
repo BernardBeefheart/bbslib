@@ -1,0 +1,22 @@
+<p>Je teste mon code avec plusieurs implémentations de Scheme. Voici quelques remarques à propos de chacune d'entre elles.</p>
+
+<h2>note préliminaire</h2>
+<p>Je travaille sous Debian. Certaines des notes qui suivent devront certainement être adaptées en particulier pour Windows, Mac OS X ou BSD.</p>
+
+<h2>les implémentations R7RS</h2>
+
+<h3>Chibi Scheme</h3>
+<p>On le trouve sur <a href="https://github.com/ashinn/chibi-scheme">Github</a>. Les instructions de la page d'accueil sont suffisantes pour le compiler et l'installer. Son utilisation est très simple en ligne de commande. Pour une utilisation interactive:
+</p>
+<pre>
+chibi-scheme -R -I . -I path/to/code
+</pre>
+<p>Pour lancer un programme:</p>
+<pre>
+chibi-scheme -I . -I path/to/code lecode.scm
+</pre>
+<p>L'option <code>-I directory</code> indique à <em>Chibi Scheme</em> où se trouve les bibliothèques à importer.</p>
+<p><strong>Note importante</strong>: les bibliothèques doivent avoir l'extension <code>.sld</code>. Une solution simple est de créer un lien dynamique sur le fichier <code>.scm</code> correspondant:</p>
+<pre>
+ln -s mylib.scm mylib.sld
+</pre>

@@ -536,7 +536,7 @@ dd p:first-child {
   padding-bottom: 10px
 }
 
-.header-level-2 {
+h2, .header-level-2 {
   font-size: 1.58em;
   color: #7c334f;
   margin: .95em 0 .5em;
@@ -545,7 +545,7 @@ dd p:first-child {
   padding-bottom: 10px
 }
 
-.header-level-3 {
+h3, .header-level-3 {
   margin: 20px 0 10px;
   font-size: 1.45em;
 }
@@ -584,3 +584,10 @@ dd p:first-child {
 	float: left;
 }
 
+article h3 {
+	font-style: italic;
+}
+
+footer {
+	clear: both;
+}
