@@ -591,3 +591,7 @@ article h3 {
 footer {
 	clear: both;
 }
+
+.italic {
+	font-style: italic;
+}
