@@ -585,10 +585,12 @@ dd p:first-child {
 /* my ads */
 
 article {
+	font-family: 'Open Sans', Myriad, Calibri, sans-serif;
 	text-align: justify;
 }
 
 menu {
+	font-family: 'Open Sans', Myriad, Calibri, sans-serif;
 	display: block;
 	width: 33%;
 	padding: 8px;
