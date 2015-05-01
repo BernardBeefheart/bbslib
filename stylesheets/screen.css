@@ -85,12 +85,11 @@ header {
   margin: 0 auto;
   width: 100%;
   top: 38px;
-  background-color: #ffc000;
+  background-color: #ffd070;
 }
 
 
 header h1 {
-  /* background-color: #7c334f; */
 	font-family: 'print_errorregular';
   background-color: transparent;
   font-size: 5.5em;
@@ -104,9 +103,8 @@ header h1 {
 }
 
 header h2 {
-  /* background-color: #7c334f; */
   background-color: transparent;
-  font: bold italic .85em/1.5 Georgia, Times, “Times New Roman”, serif;
+  font: bold italic 1.85em/1.5 'le-havre', Georgia, Times, “Times New Roman”, serif;
   color: #ff5458;
   padding-bottom: 14px;
   margin-top: -3px;
@@ -121,7 +119,6 @@ section#downloads {
   padding-bottom: 150px;
   margin: -80px auto -150px;
   z-index: 1;
-  /* background: transparent url(../images/bg-ramp.jpg) center 171px no-repeat; */
 }
 
 
@@ -131,8 +128,7 @@ section#downloads a {
   height: 67px;
   width: 50%;
   padding-top: 130px;
-  /* background: transparent url(../images/download-sprite.png) 0 0 no-repeat; */
-  background-color: #ffc000;
+  background-color: #ffd070;
   text-align: center;
   line-height: 1;
   color: #a33;
@@ -170,7 +166,6 @@ section#downloads a.tgz:hover {
 }
 
 .banner-fix {
-  /* background: transparent url(../images/download-fallback-bg.png) center top no-repeat; */
   display: block;
   height: 19px;
   position: absolute;
@@ -187,7 +182,6 @@ section#main_content {
 /* footer */
 
 footer {
-  /* background: transparent url(../images/footer-ramp.jpg) center -1px no-repeat; */
   padding-top: 104px;
   margin: -94px auto 40px;
   max-width: 560px;
@@ -211,7 +205,6 @@ footer a {
 }
 
 footer span.octocat {
-  /* background: transparent url(../images/octocat.png) 0 0 no-repeat; */
   display: block;
   width: 30px;
   height: 30px;
@@ -240,7 +233,7 @@ a:hover {
 }
 
 h1,h2,h3,h4,h5,h6 {
-  font-family: 'old_standard_ttbold', Myriad, Calibri, sans-serif;
+  font-family: 'le-havre', 'old_standard_ttbold', Myriad, Calibri, sans-serif;
   font-weight: bold;
 }
 
@@ -277,7 +270,6 @@ menu ul li {
 }
 
 article ul {
-  /* margin: .7em 0; */
   padding-left: 1.35em;
 }
 
@@ -311,8 +303,11 @@ hr {
   margin: 0 0 20px;
 }
 
-code {
+code pre {
   font: normal normal .8em/1.7 "Lucida Sans Typewriter", "Lucida Console", Monaco, "Bitstream Vera Sans Mono", monospace;
+}
+
+code {
   padding: 0 5px 1px;
   font-weight: bold;
   font-style: italic;
@@ -323,7 +318,6 @@ pre {
   padding: .7em;
   background: #cc9;
   border-bottom: 2px solid #bdb6ad;
-  font: normal normal .9em/1.7 "Lucida Sans Typewriter", "Lucida Console", Monaco, "Bitstream Vera Sans Mono", monospace;
   overflow: auto;
 }
 
