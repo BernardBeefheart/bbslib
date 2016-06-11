@@ -5,7 +5,7 @@
 
 (define-library
   (closures)
-  (export test1)
+  (export test-closures)
   (import (scheme base) (scheme write) (sl-printf println))
   (begin
 
@@ -33,25 +33,25 @@
 
 	(define-syntax defcounter
 	  (syntax-rules ()
-					((defcounter name)
-					 (define name (counter 'name)))))
+					((defcounter counter-name)
+					 (define counter-name (counter 'counter-name)))))
 
 	(define-syntax send->counter*
 	  (syntax-rules ()
-					((send->counter name method)
+					((send->counter counter-name method)
 					 (guard (e (else (println "ERROR: " e " !!")))
-							(name method)))))
+							(counter-name method)))))
 
 	(define send->counter
-	  (lambda (name method)
+	  (lambda (counter-name method)
 		(guard (e (else (println "ERROR: " e " !!")))
-			   (name method))))
+			   (counter-name method))))
 
 	(define-syntax display->counter
 	  (syntax-rules ()
-					((display->counter name)
-					 (send->counter name 'display))))
-	(define test1
+					((display->counter counter-name)
+					 (send->counter counter-name 'display))))
+	(define test-closures
 	  (lambda()
 		(defcounter c++)
 		(defcounter c--)
@@ -71,6 +71,6 @@
 		(display->counter c++)
 		(display->counter c--)))
 
-	(test1)
+	(test-closures)
 
 	))
