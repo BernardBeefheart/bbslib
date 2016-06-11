@@ -1,11 +1,12 @@
 ;; ======================================================================
 ;; closures.scm
+;; sagittarius -r 7 -L .. closures.scm
 ;; ======================================================================
 
 (define-library
   (closures)
   (export test1)
-  (import (scheme base) (scheme write) (println))
+  (import (scheme base) (scheme write) (sl-printf println))
   (begin
 
 	(cond-expand
