@@ -2,10 +2,11 @@
 ;; records.scm
 ;; ======================================================================
 
-(cond-expand
-  (guile
-	(use-modules (sl-printf println)))
-  (else (import (scheme base) (scheme inexact) (println))))
+(define-library
+  (closures)
+  (export test-closures)
+  (import (scheme base) (scheme inexact) (sl-printf println))
+  (begin
 
 (define-record-type <point>
   (make-point x y)           ;; constructeur
@@ -26,4 +27,6 @@
 (define origine (make-point 0 0))
 (define p1 (make-point 1 1))
 
-(println "distance p1 origine: " (distance p1 origine))
+(println "distance p1 origine: " (distance origine p1) ) ) )
+
+

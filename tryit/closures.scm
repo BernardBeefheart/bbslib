@@ -28,7 +28,7 @@
 				('reset (set! count 0) count)
 				('display (println "Count " name " -> " count))
 				(else
-				  (raise "ERROR: method must be one of inc, dec, reset, get and display")))))
+				  (raise "--> method must be one of inc, dec, reset, get and display")))))
 		  closure-counter)))
 
 	(define-syntax defcounter
@@ -39,7 +39,7 @@
 	(define-syntax send->counter*
 	  (syntax-rules ()
 					((send->counter counter-name method)
-					 (guard (e (else (println "ERROR: " e " !!")))
+					 (guard (e (else (err-println e " !!")))
 							(counter-name method)))))
 
 	(define send->counter
@@ -62,8 +62,8 @@
 		(send->counter c-- 'pipo)
 		(display->counter c++)
 		(display->counter c--)
-		(send->counter c++ 'inc)
-		(send->counter c-- 'dec)
+		(send->counter* c++ 'inc)
+		(send->counter* c-- 'dec)
 		(display->counter c++)
 		(display->counter c--)
 		(send->counter c++ 'inc)
@@ -71,6 +71,9 @@
 		(display->counter c++)
 		(display->counter c--)))
 
+    (println "=====================================")
+    (println "starting test....")
 	(test-closures)
+    (println "end of test")
 
 	))
