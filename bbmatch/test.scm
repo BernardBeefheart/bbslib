@@ -1,14 +1,15 @@
 
 ;; (require-extension syntactic-closures)
 ;; (load "./matchable.scm")
-
+;; export SAGITTARIUS_LOADPATH=~/git/bbslib:~/git/bbslib:.:..:~/git/bbslib:.:..:~/git/bbslib/tester
+;; sagittarius -r 7 -L $SAGITTARIUS_LOADPATH test.scm
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; SRFI-64 subset
 
 (define-library 
  (test-bbmatch)
- (import (scheme base) (scheme write) (scheme time)
-         (sl-printf println) (bbmatch) (tester tester))
+ (import (sagittarius)(scheme base) (scheme write) (scheme time)
+         (bbmatch) (sl-printf println) (tester))
  (begin
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
    ;; run tests
